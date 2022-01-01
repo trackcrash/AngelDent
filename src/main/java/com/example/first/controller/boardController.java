@@ -2,6 +2,7 @@ package com.example.first.controller;
 
 import com.example.first.model.board;
 import com.example.first.repository.BoardRepository;
+import com.example.first.validator.BoardValidator;
 import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,9 @@ import java.util.List;
 public class boardController {
     @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private BoardValidator boardValidator;
     // 글 목록
     @GetMapping("/list")
     public String list(Model model) {
@@ -41,6 +45,7 @@ public class boardController {
     // 글 저장
     @PostMapping("/write")
     public String writeSubmit(@Valid board board, BindingResult bindingResult) {
+        boardValidator.validate(board, bindingResult);
         if (bindingResult.hasErrors()) {
             return "board/write";
         }

@@ -13,19 +13,21 @@
 </nav>
     <div class="container">
         <h1>게시판</h1>
-        <form th:action="@{/board/write}" th:object="${board}" method="post">
+        <form action="#" th:action="@{/board/write}" th:object="${board}" method="post">
             <input type="hidden" th:field="*{id}">
             <div class="mb-3">
                 <label for="title" class="form-label">제목</label>
-                <input type="text" class="form-control" th:classappend="${#fields.hasErrors('title')} ? 'is-invaild'" id="title" th:field="*{title}" placeholder="제목을 입력해주세요">
-                <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
+                <input type="text" class="form-control" th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'"
+                       id="title" th:field="*{title}" placeholder="제목을 입력해주세요">
+                <div id="titleFeedback" class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
                     제목을 입력해주세요
                 </div>
             </div>
             <div class="mb-3">
                 <label for="contents" class="form-label">내용</label>
-                <textarea class="form-control" th:classappend="${#fields.hasErrors('contents')} ? 'is-invaild'" id="contents" rows="3" th:field="*{contents}"></textarea>
-                <div class="invalid-feedback" th:if="${#fields.hasErrors('contents')}" th:errors="*{contents}">
+                <textarea class="form-control" th:classappend="${#fields.hasErrors('contents')} ? 'is-invalid'"
+                          id="contents" rows="3" th:field="*{contents}"></textarea>
+                <div id="contentsFeedback" class="invalid-feedback" th:if="${#fields.hasErrors('contents')}" th:errors="*{contents}">
                     내용을 입력해주세요
                 </div>
             </div>
