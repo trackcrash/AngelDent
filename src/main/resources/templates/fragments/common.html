@@ -44,8 +44,9 @@
                         </ul>
                     </li>
                 </ul>
-                <form>
-                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                <form class="form-inline d-flex justify-content-end" method="GET" th:action="@{/board/list}">
+                    <input class="form-control" type="text" placeholder="Search" id="search" name="searchText" aria-label="Search" th:value="${param.searchText}">
+                    <button type="submit" class="btn btn-secondary">검색</button>
                 </form>
             </div>
         </div>
