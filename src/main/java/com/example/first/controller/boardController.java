@@ -60,17 +60,19 @@ public class boardController {
         boardRepository.save(board);
         return "redirect:/board/list";
     }
-
-    @RequestMapping("/view")
-    public String view() {
+    //글 보여주기
+    @GetMapping("/view/{id}")
+    public String view(Model model, @PathVariable Long id) {
+        board board = boardRepository.getById(id);
+        model.addAttribute("board", board);
         return "board/view";
     }
-
+    //글 수정
     @RequestMapping("/modify")
     public String modify() {
         return "board/modify";
     }
-
+    //글 삭제
     @RequestMapping("/delete")
     public String delete() {
         return "board/delete";

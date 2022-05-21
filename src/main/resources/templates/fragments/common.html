@@ -7,9 +7,7 @@
     <link href="css/navbar.css" th:href="@{/navbar.css}" rel="stylesheet">
     <style>
         body {
-            background-image: url("img/background.PNG");
-            background-repeat: no-repeat;
-            background-size: cover;
+            background-color: #f5f5f5;
         }
     </style>
     <!--<title th:if="${!empty(pageTitle)}" th:text="${pageTitle}"
@@ -19,37 +17,47 @@
     <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:fragment="menu(menu)" aria-label="Third navbar example" >
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">씹덕쉑</a>
+            <a class="navbar-brand" href="/">엔젤치과</a>
             <button class="navbar-toggler"  type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarsExample03">
+            <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" id="navbarsExample03">
                 <ul class="navbar-nav me-auto mb-2 mb-sm-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link" aria-current="page" href="/">병원소개</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/board/list">Board</a>
+                        <a class="nav-link" aria-current="page" href="/board/list">자주하는 질문</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled">Not now</a>
+                        <a class="nav-link" href="/">진료과목</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdown03">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">온라인 상담</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">예약</a>
                     </li>
                 </ul>
+            </div>
+        </div>
+    </nav>
+    <footer class="mt-auto text-white-50">
+        <p>상호명:엔젤치과 대표자:김길호 사업자 등록번호:111-01-111111</p>
+    </footer>
+    </body>
+</html>
 
+            <!--
+            body {
+            background-image: url("img/background.PNG");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
             </div>
             <form class="form-inline d-flex justify-content-end" method="GET" th:action="@{/board/list}">
                 <input class="form-control" type="text" placeholder="Search" id="search" name="searchText" aria-label="Search" th:value="${param.searchText}">
                 <button type="submit" class="btn btn-secondary">검색</button>
             </form>
-        </div>
-    </nav>
-    </body>
+                    -->

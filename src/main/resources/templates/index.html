@@ -1,20 +1,118 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="fragments/common :: head('Main')">
+    <head> <!-- th:replace="fragments/common :: head('게시판')" -->
+        <meta charset="utf-8">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <!--<link href="css/navbar.css" th:href="@{/navbar.css}" rel="stylesheet">>-->
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link href="css/navbar.css" rel="stylesheet">
-    </head>
-    <body>
+        <!--<link href="css/navbar.css" rel="stylesheet">-->
+        <!-- Custom styles for this template -->
+        <link href="/css/cover.css" rel="stylesheet">
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+            }
 
-    <!--common html navigator bar -->
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:replace="fragments/common :: menu('main')" aria-label="Third navbar example"></nav>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+            .header_container{
+                margin:5px auto;
+            }
+            .main_container {
+                margin-top: 50px;
+            }
+            .img_container {
+                width: 100%;
+                height: 550px;
+                display: flex;
+                align-items: center;
+
+            }
+            .img1{
+                background-image: url("../img/topbg.jpg");
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            .img_inner{
+                margin: 0 auto;
+            }
+            .lead-center{
+                width:65%;
+                margin:15px auto;
+
+            }
+            .px-3{
+
+            }
+        </style>
+    </head>
+    <body class="d-flex h-100 text-center text-white bg-dark">
+
+    <div class="d-flex w-100 h-100 mx-auto flex-column">
+        <header class="mb-auto cover-container header_container">
+            <div>
+                <h3 class="float-md-start mb-0">
+                    <a class="nav-link" href="/">엔젤치과</a>
+                </h3>
+                <nav class="nav nav-masthead justify-content-center float-md-end">
+                    <a class="nav-link" href="/">병원소개</a> <!--aria-current="page"-->
+                    <a class="nav-link" href="/">진료과목</a>
+                    <a class="nav-link" aria-current="page" href="/board/list">자주하는 질문</a>
+                    <a class="nav-link" href="/">온라인 상담</a>
+                    <a class="nav-link" href="/">예약</a>
+                </nav>
+            </div>
+        </header>
+        <div class="main_container">
+        <div class="img_container img1">
+            <div class="px-3 img_inner">
+                <h1>Cover your page.</h1>
+                <p class="lead lead-center">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+                <p class="lead">
+                    <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
+                </p>
+            </div>
+        </div>
+        <div class="img_container">
+            <div class="px-3 img_inner">
+                <h1>Cover your page.</h1>
+                <p class="lead lead-center">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+                <p class="lead">
+                    <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
+                </p>
+            </div>
+        </div>
+        <div class="img_container">
+            <div class="px-3 img_inner">
+                <h1>Cover your page.</h1>
+                <p class="lead lead-center">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+                <p class="lead">
+                    <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
+                </p>
+            </div>
+        </div>
+        </div>
+
+        <footer class="mt-auto text-white-50 bg-dark">
+            <p>상호명:엔젤치과 대표자:김길호 사업자 등록번호:111-01-111111</p>
+        </footer>
+    </div>
+
+
+
+
     </body>
 </html>

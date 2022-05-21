@@ -12,8 +12,8 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:replace="fragments/common :: menu('board')" aria-label="Third navbar example">
 </nav>
 <div class="container">
-    <h1>게시판 목록</h1>
-    <div>항목 수: <span th:text="${boards.totalElements}"></span></div>
+    <h1>자주하는 질문</h1>
+    <!--<div>항목 수: <span th:text="${boards.totalElements}"></span></div>-->
     <!--목록 테이블-->
     <table class="table table-striped">
         <thead>
@@ -26,8 +26,8 @@
         <tbody>
             <tr th:each="board : ${boards}">
                 <td th:text="${board.id}"></td>
-                <td><a th:text="${board.title}" th:href="@{/board/write(id=${board.id})}"></a></td>
-                <td th:text="${board.contents}"></td>
+                <td><a th:text="${board.title}" th:href="@{/board/view/{id}(id=${board.id})}"></a></td>
+                <td th:text="${board.user.username}"></td>
             </tr>
         </tbody>
     </table>
