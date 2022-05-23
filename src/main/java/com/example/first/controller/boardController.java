@@ -73,8 +73,10 @@ public class boardController {
         return "board/modify";
     }
     //글 삭제
-    @RequestMapping("/delete")
-    public String delete() {
-        return "board/delete";
+    @RequestMapping (value = "/delete/view/{id}", method=RequestMethod.DELETE)
+    public String deleteboard(@RequestParam(required = false) Long id) {
+        board board = boardRepository.getById(id);
+        boardRepository.deleteById(id);
+        return "redirect:/board/list";
     }
 }

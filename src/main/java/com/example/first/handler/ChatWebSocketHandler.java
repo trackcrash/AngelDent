@@ -23,7 +23,7 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
                                      CloseStatus status) throws Exception {
       sessions.remove(session);
    }
-   //echo message
+
    @Override
    protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
       for (WebSocketSession webSocketSession : sessions) {

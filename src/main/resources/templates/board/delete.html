@@ -14,15 +14,6 @@
 <div class="container">
     <form action="#" th:action="@{/board/view}" th:object="${board}" method="get">
         <input type="hidden" th:field="*{id}">
-        <div class="mb-3">
-            <label for="title" class="form-label">제목</label>
-            <p type="text" class="form-control" id="title" th:text="${board.title}">
-            </p>
-        </div>
-        <div class="mb-3">
-            <label for="contents" class="form-label">내용</label>
-            <p class="form-control" id="contents" th:text="${board.contents}"></p>
-        </div>
     </form>
 </div>
 <!-- Optional JavaScript -->
