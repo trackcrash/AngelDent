@@ -2,25 +2,27 @@ package com.example.first.controller;
 
 import com.example.first.model.board;
 import com.example.first.repository.BoardRepository;
+import com.example.first.service.BoardService;
 import com.example.first.validator.BoardValidator;
-import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping("/board")
 public class boardController {
     @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private BoardService boardService;
 
     @Autowired
     private BoardValidator boardValidator;
@@ -43,21 +45,17 @@ public class boardController {
         if (id == null) {
         model.addAttribute("board", new board());
         }
-        // 수정일 경우
-        else {
-            board board = boardRepository.findById(id).orElse(null);
-            model.addAttribute("board", board);
-        }
         return "board/write";
     }
     // 글 저장
     @PostMapping("/write")
-    public String writeSubmit(@Valid board board, BindingResult bindingResult) {
+    public String writeSubmit(@Valid board board, BindingResult bindingResult, Authentication authentication) {
         boardValidator.validate(board, bindingResult);
         if (bindingResult.hasErrors()) {
             return "board/write";
         }
-        boardRepository.save(board);
+        String username = authentication.getName();
+        boardService.save(username,board);
         return "redirect:/board/list";
     }
     //글 보여주기
@@ -68,13 +66,21 @@ public class boardController {
         return "board/view";
     }
     //글 수정
-    @RequestMapping("/modify")
-    public String modify() {
+    @GetMapping("/modify/{id}")
+    public String modify(Model model, @PathVariable Long id) {
+        board board = boardRepository.getById(id);
+        model.addAttribute("board", board);
         return "board/modify";
     }
+    @PostMapping("/modify")
+    public String modify(@ModelAttribute board board ,@RequestParam Long id,Authentication authentication) {
+            String username = authentication.getName();
+            boardService.save(username, board);
+        return "redirect:/board/list";
+    }
     //글 삭제
-    @RequestMapping (value = "/delete/view/{id}", method=RequestMethod.DELETE)
-    public String deleteboard(@RequestParam(required = false) Long id) {
+    @GetMapping (value = "/delete/{id}")
+    public String deleteboard(@PathVariable Long id) {
         board board = boardRepository.getById(id);
         boardRepository.deleteById(id);
         return "redirect:/board/list";

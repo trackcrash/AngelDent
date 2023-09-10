@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--links-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+    </style>
+    <title> Chat </title>
+
+</head>
+<body>
+
+        <div class="container">
+            <div class="col-6">
+                <label><b>채팅방</b></label>
+            </div>
+            <div>
+                <div id="messageArea" class="col">
+
+                </div>
+                <div class="col-6">
+                    <div class="input-group mb-3">
+                        <input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" onkeyup="if(window.event.keyCode==13){sendMessage()}"/><!--수정사항 엔터입력시 전송-->
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" id="button_send" onclick="sendMessage()">전송</button>
+                            <button class="btn btn-outline-secondary" type="submit" id="button_end" onclick="onClose()">돌아가기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            // 채팅은 ajax랑 SockJS사용해서 처리
+            var ws = new SockJS('http://52.27.90.60/ws/chat');
+            ws.onopen = onOpen;
+            ws.onclose = onClose;
+            ws.onmessage = onMessage;
+            //입장시
+            function onOpen(evt){
+                $("#messageArea").append("채팅방에 입장하셨습니다");
+                console.log("open success");
+                /*$.ajax({
+                    url: 'http://',
+                    type: 'POST',
+                    data: {
+                        'user_id': 'user_id',
+                        'room_id': 'room_id'
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    }
+                })*/
+            }
+            //퇴장시
+            function onClose(evt){
+                $("#messageArea").append("퇴장하셨습니다");
+                location.href='/';
+                //back to main page
+
+            }
+            //메세지송신후 alpha 수정사항 메세지창 초기화
+            function sendMessage(){
+                var msg = $("#msg").val();
+                ws.send(msg);
+
+                $("#msg").val("");
+            }
+            //메시지 출력
+            function onMessage(evt){
+                var data = evt.data;
+                var sessionId = null;
+                var message = null;
+                var arr = data.split(":");
+                sessionId = arr[0];
+                message = arr[1];
+                 var str = "<div class='col-6'>";
+                 str += "<div class='alert alert-secondary' style='min-width: 30%'>";
+                 str += "<b>" + sessionId +" : " + message + "</b>";
+                 str += "</div></div>";
+                console.log(str);
+                $("#messageArea").append(str);
+            }
+        </script>
+</body>
+</html>

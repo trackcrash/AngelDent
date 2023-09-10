@@ -24,10 +24,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+                http.cors().and();
+                http.csrf().disable();
+                http
                 .authorizeRequests()
-                    /*.antMatchers("/","/css/**","/img/**","/account/register").permitAll()*/
-                    .antMatchers("/**").permitAll()
+                    .antMatchers("/","/error/**","/api/**","/booking/booking","/ws/**","/assets/**","/css/**","/img/**","/account/register","/chat/**","/board/list","/board/view","/booking/complete/**","/booking/result").permitAll()
+                    .antMatchers("/booking/check").hasRole("ADMIN")
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
@@ -35,6 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                     .and()
                 .logout()
+                        .logoutSuccessUrl("/")
                     .permitAll();
     }
 

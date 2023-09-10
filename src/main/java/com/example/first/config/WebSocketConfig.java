@@ -15,7 +15,9 @@ public class WebSocketConfig implements WebSocketConfigurer {
     private final static String CHAT_END_POINT = "/chat";
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(getChatWebSocketHandler(), "/ws/chat").setAllowedOrigins("*");
+        registry.addHandler(getChatWebSocketHandler(), "/ws/chat").setAllowedOrigins("http://localhost").withSockJS();
+
+        /*setAllowedOrigins("http://localhost:8081")*/
     }
 
     @Bean

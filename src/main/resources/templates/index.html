@@ -1,118 +1,181 @@
-<!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head> <!-- th:replace="fragments/common :: head('게시판')" -->
-        <meta charset="utf-8">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <!--<link href="css/navbar.css" th:href="@{/navbar.css}" rel="stylesheet">>-->
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="twitter:image:src" content="">
+    <meta property="og:image" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="assets/images/mbr-96x157.png" type="image/x-icon">
+    <meta name="description" content="">
 
-        <!-- Bootstrap CSS -->
-        <!--<link href="css/navbar.css" rel="stylesheet">-->
-        <!-- Custom styles for this template -->
-        <link href="/css/cover.css" rel="stylesheet">
-        <style>
-            .bd-placeholder-img {
-                font-size: 1.125rem;
-                text-anchor: middle;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                user-select: none;
-            }
 
-            @media (min-width: 768px) {
-                .bd-placeholder-img-lg {
-                    font-size: 3.5rem;
-                }
-            }
-            .header_container{
-                margin:5px auto;
-            }
-            .main_container {
-                margin-top: 50px;
-            }
-            .img_container {
-                width: 100%;
-                height: 760px;
-                display: flex;
-                align-items: center;
+    <title>엔젤치과</title>
+    <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+    <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="assets/parallax/jarallax.css">
+    <link rel="stylesheet" href="assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="assets/socicon/css/styles.css">
+    <link rel="stylesheet" href="assets/theme/css/style.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+    <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
+    <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+</head>
 
-            }
-            .img1{
-                background-image: url("../img/topbg.jpg");
-                background-size: cover;
-                background-repeat: no-repeat;
-            }
-            .img_inner{
-                margin: 0 auto;
-            }
-            .lead-center{
-                width:65%;
-                margin:15px auto;
+<body>
+<section data-bs-version="5.1" class="menu menu2 cid-t6XioletC6" once="menu" id="menu2-10">
 
-            }
-            .px-3{
-
-            }
-        </style>
-    </head>
-    <body class="d-flex h-100 text-center text-white bg-dark">
-
-    <div class="d-flex w-100 h-100 mx-auto flex-column">
-        <header class="mb-auto cover-container header_container">
-            <div>
-                <h3 class="float-md-start mb-0">
-                    <a class="nav-link" href="/">엔젤치과</a>
-                </h3>
-                <nav class="nav nav-masthead justify-content-center float-md-end">
-                    <a class="nav-link" href="/">병원소개</a> <!--aria-current="page"-->
-                    <a class="nav-link" href="/account/login">로그인</a>
-                    <a class="nav-link" aria-current="page" href="/board/list">자주하는 질문</a>
-                    <a class="nav-link" href="/web/chat">온라인 상담</a>
-                    <a class="nav-link" href="/reserv/reserv">예약</a>
-                </nav>
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                    <span class="navbar-logo">
+                    <a href="/">
+                        <img src="assets/images/mbr-96x157.png" alt="Logo" style="height: 3rem;">
+                    </a>
+                </span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-danger display-7" href="/">엔젤치과</a></span>
             </div>
-        </header>
-        <div class="main_container">
-        <div class="img_container img1">
-            <div class="px-3 img_inner">
-                <h1>Cover your page.</h1>
-                <p class="lead lead-center">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-                <p class="lead">
-                    <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
-                </p>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+                    <li class="nav-item"><a class="nav-link link text-black display-4" href="/board/list">자주하는 질문</a></li>
+                    <li class="nav-item"><a class="nav-link link text-black display-4" href="/booking/booking">예약</a></li>
+                    <li class="nav-item"><a class="nav-link link text-black display-4" href="/booking/complete">예약확인</a></li>
+                    <li class="nav-item"><a class="nav-link link text-black display-4" sec:authorize="hasRole('ROLE_ADMIN')" href="/booking/check">예약승인</a></li>
+                </ul>
+                <!--로그인된 사용자만 thymeleaf extras springsecurity 사용-->
+                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-danger display-4" th:href="@{/account/login}" sec:authorize="!isAuthenticated()">로그인</a></div>
+                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-danger display-4" th:href="@{/account/register}" sec:authorize="!isAuthenticated()">회원가입</a></div>
+            <form class="navbar-buttons mbr-section-btn" th:action="@{/logout}" method="POST" sec:authorize="isAuthenticated()">
+                <button class="btn btn-danger display-4" type="submit">로그아웃</button>
+                </form>
+                <form class="navbar-buttons mbr-section-btn" sec:authorize="isAuthenticated()">
+                    <a class="mbr-text mbr-fonts-style display-7">환영합니다  </a>
+                    <a class="mbr-text mbr-fonts-style display-7" sec:authentication="name"></a>
+                </form>
             </div>
         </div>
-        <div class="img_container">
-            <div class="px-3 img_inner">
-                <h1>Cover your page.</h1>
-                <p class="lead lead-center">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-                <p class="lead">
-                    <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
-                </p>
-            </div>
-        </div>
-        <div class="img_container">
-            <div class="px-3 img_inner">
-                <h1>Cover your page.</h1>
-                <p class="lead lead-center">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-                <p class="lead">
-                    <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
-                </p>
-            </div>
-        </div>
-        </div>
+    </nav>
+</section>
 
-        <footer class="mt-auto text-white-50 bg-dark">
-            <p>상호명:엔젤치과 대표자:김길호 사업자 등록번호:111-01-111111</p>
-        </footer>
+<section data-bs-version="5.1" class="header2 cid-t6XirtFame mbr-fullscreen mbr-parallax-background" id="header2-11">
+
+    <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(255, 255, 255);"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-7">
+                <h1 class="mbr-section-title mbr-fonts-style mb-3 display-1">저희 치과에 오신것을 환영합니다</h1>
+
+                <p class="mbr-text mbr-fonts-style display-7">고객님의 아름다운 동행 엔젤치과가 함께합니다.</p>
+                <div class="mbr-section-btn mt-3"><a class="btn btn-success display-4" href="/booking/booking">지금 예약하기</a>
+                    <a class="btn btn-success-outline display-4" href="/chat/webchat" target="_blank">또는 상담하기</a></div>
+            </div>
+        </div>
     </div>
+</section>
+
+<section data-bs-version="5.1" class="features11 cid-t6XixzZanA" id="features12-12">
 
 
 
 
-    </body>
+
+    <div class="container">
+        <div class="m-0 row align-items-center">
+            <div class="col-12 col-lg">
+                <div class="card-wrapper">
+                    <div class="card-box">
+                        <h4 class="card-title mbr-fonts-style mb-4 display-2"><strong>임플란트</strong><br></h4>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7">고품격 진료를 엔젤치과에서 경험해 보세요.</p>
+
+                        <div class="mbr-section-btn mb-4"><a class="btn btn-info display-4" href="/chat/webchat">상담받기</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-0 col-12 col-lg-6 md-pb">
+                <div class="image-wrapper">
+                    <img src="assets/images/mbr-1108x736.jpg" alt="Free_image">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="contacts3 map1 cid-t6XiAPQlky" id="contacts3-13">
+
+
+
+
+
+    <div class="container">
+        <div class="mbr-section-head">
+            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>찾아오시는 길</strong></h3>
+
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="card col-12 col-md-6">
+                <div class="card-wrapper">
+                    <div class="image-wrapper">
+                        <span class="mbr-iconfont mbri-mobile2" style="color: rgb(140, 175, 240); fill: rgb(140, 175, 240);"></span>
+                    </div>
+                    <div class="text-wrapper">
+                        <h6 class="card-title mbr-fonts-style mb-1 display-5">
+                            <strong>전화</strong></h6>
+                        <p class="mbr-text mbr-fonts-style display-7">064)711-2804</p>
+                    </div>
+                </div>
+                <div class="card-wrapper">
+                    <div class="image-wrapper">
+                        <span class="mbr-iconfont mobi-mbri-globe mobi-mbri" style="color: rgb(140, 175, 240); fill: rgb(140, 175, 240);"></span>
+                    </div>
+                    <div class="text-wrapper">
+                        <h6 class="card-title mbr-fonts-style mb-1 display-5"><strong>이메일</strong></h6>
+                        <p class="mbr-text mbr-fonts-style display-7">example@gamil.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-wrapper col-12 col-md-6">
+                <div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9411.149601807332!2d126.48079055726296!3d33.49242995175418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x350cfaff0c508517%3A0x3cfa4c9d14973887!2z7JeU7KCk7LmY6rO8!5e0!3m2!1sko!2skr!4v1653578869257!5m2!1sko!2skr"
+                                                allowfullscreen=""></iframe></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="footer7 cid-t6XnoU4IYi" once="footers" id="footer7-16">
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            <div class="col-12">
+                <p class="mbr-text mb-0 mbr-fonts-style display-7">엔젤치과: 대표:김길호&nbsp; |&nbsp; 사업자번호: 111-11-11111&nbsp;</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section type="hidden" class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 0px;">
+    <a href="https://mobiri.se/2782924" style="flex: 1 1;height: 0px;position: absolute;width: 0px;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a>
+    <p style="margin: 0;text-align: center;" class="display-7"> &#8204;</p>
+    <a style="z-index:1" href="https://mobirise.com/html-builder.html"></a>
+</section>
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/parallax/jarallax.js"></script>
+<script src="assets/smoothscroll/smooth-scroll.js"></script>
+<script src="assets/ytplayer/index.js"></script>
+<script src="assets/dropdown/js/navbar-dropdown.js"></script>
+<script src="assets/theme/js/script.js"></script>
+
+</body>
+
 </html>

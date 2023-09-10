@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
-
+    //패스워드 암호화
     @Autowired
     private PasswordEncoder passwordEncoder;
-
+    //패스워드 저장용
     public member save(member user) {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);

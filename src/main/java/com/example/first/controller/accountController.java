@@ -23,9 +23,9 @@ public class accountController {
 
     @GetMapping("/register")
     public String register(){
-
         return "account/register";
     }
+    //유저 정보 저장!
     @PostMapping("/register")
     public String register(member user){
         userService.save(user);

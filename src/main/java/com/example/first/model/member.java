@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+//vo member
 @Entity
 @Data
 public class member {
@@ -15,6 +15,7 @@ public class member {
     private String username;
     private String password;
     private Boolean enable;
+    //String name int phone_num
 
     @ManyToMany
     @JoinTable(name = "user_role",

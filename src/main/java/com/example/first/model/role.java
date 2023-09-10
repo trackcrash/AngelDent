@@ -4,7 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
-
+//vo role
 @Entity
 @Data
 public class role {

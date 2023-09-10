@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/common :: head('엔젤치과')">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="twitter:image:src" content="">
+    <meta name="twitter:site" content="">
+    <meta property="og:image" content="">
+    <meta name="twitter:title" content="booking">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="/assets/images/mbr-96x157.png" type="image/x-icon">
+    <meta name="description" content="">
+
+
+    <title>엔젤치과</title>
+    <link rel="stylesheet" href="/assets/web/assets/mobirise-icons2/mobirise2.css">
+    <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/assets/parallax/jarallax.css">
+    <link rel="stylesheet" href="/assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="/assets/socicon/css/styles.css">
+    <link rel="stylesheet" href="/assets/theme/css/style.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+    <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css">
+    <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+</head>
+
+<body>
+
+    <section data-bs-version="5.1" class="menu menu2 cid-t6XioletC6" once="menu" id="menu2-17" th:replace="fragments/common :: navbar">
+
+        <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        </nav>
+    </section>
+
+    <section data-bs-version="5.1" class="form5 cid-t71qSQXwnr mt-4 mbr-fullscreen" id="form5-1b">
+
+
+        <div class="container">
+            <div class="mbr-section-head">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>예약</strong><strong><br></strong></h3>
+
+            </div>
+            <div class="row justify-content-center mt-4">
+                <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+                    <form th:action="@{/booking/booking}" th:object="${booking}" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="0rGOIccdL5cg1f/SnE+WOgndVgohZVtSbJvbPNfBo2yx7jr5GcJ4zR4qZqGLZtMnuhO0hMUt+6/P5cRpDnfn6b7Ux9Rnmz6fWpwutA9VjhzvjdZ4xX5SqWYCdtQKpB26">
+                        <div class="row">
+                            <!--<div hidden="hidden" data-form-alert="" class="alert alert-success col-12">빠른 시일에 연락드리겠습니다.</div>
+                            <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
+                                문제가 발생했습니다.
+                            </div>-->
+                        </div>
+
+                        <div class="dragArea row">
+                            <input type="hidden" name="id" th:field="*{id}">
+                            <div class="col-md col-sm-12 form-group mb-3" data-for="name">
+                                <input type="text" name="name" placeholder="이름" data-form-field="name" class="form-control" value="" id="name">
+                            </div>
+                            <div class="col-md col-sm-12 form-group mb-3" data-for="tel">
+                                <input type="tel" name="phone" placeholder="전화번호" data-form-field="tel" class="form-control" value="" id="phone">
+                            </div>
+                            <div class="col-12 form-group mb-3" data-for="url">
+                                <input type="date" name="date" placeholder="원하시는 날자" data-form-field="date" class="form-control" value="" id="date">
+                            </div>
+                            <div class="col-12 form-group mb-3" data-for="textarea">
+                                <textarea name="content" placeholder="원하시는 것을 입력해주세요." data-form-field="textarea" class="form-control" id="content"></textarea>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button type="submit" class="btn btn-primary display-4">예약신청</button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section data-bs-version="5.1" class="footer7 cid-t6XnoU4IYi" once="footers" id="footer7-18" th:replace="fragments/common :: footer">
+
+
+
+
+
+        <div class="container">
+            <div class="media-container-row align-center mbr-white">
+                <div class="col-12">
+                    <p class="mbr-text mb-0 mbr-fonts-style display-7">엔젤치과: 대표:김길호&nbsp; |&nbsp; 사업자번호: 111-11-11111&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section type="hidden" class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 0px;">
+        <a href="https://mobiri.se/2782924" style="flex: 1 1;height: 0px;position: absolute;width: 0px;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a>
+        <p style="margin: 0;text-align: center;" class="display-7"> &#8204;</p>
+        <a style="z-index:1" href="https://mobirise.com/html-builder.html"></a>
+    </section>
+    <script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/smoothscroll/smooth-scroll.js"></script>
+    <script src="/assets/ytplayer/index.js"></script>
+    <script src="/assets/dropdown/js/navbar-dropdown.js"></script>
+    <script src="/assets/theme/js/script.js"></script>
+    <script src="/assets/formoid/formoid.min.js"></script>
+</body>
+
+</html>

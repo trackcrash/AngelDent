@@ -5,4 +5,5 @@ import com.example.first.model.member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<member, Long> {
+    member findByUsername(String username);
 }
