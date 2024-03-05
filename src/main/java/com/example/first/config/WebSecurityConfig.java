@@ -47,10 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder())
                 .usersByUsernameQuery("select username, password, enable from member where username = ?")
-                .authoritiesByUsernameQuery("select m.username, r.name "
-                      + "from user_role ur inner join member m on ur.user_id = m.id "
-                      + "inner join role r on ur.role_id = r.id where m.username = ?");
-
+                .authoritiesByUsernameQuery("select username, role from member where username = ?");
     }
 
     @Bean

@@ -10,6 +10,8 @@ import java.util.List;
 
 public interface BookingRepository extends JpaRepository<booking, Long> {
     Page<booking> findByNameContainingOrPhoneContaining(String name, String phone, Pageable pageable);
+    Page<booking> findByActive(boolean active, Pageable pageable);
+
     List<booking> findByNameContaining(String name);
 }
 

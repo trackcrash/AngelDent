@@ -11,22 +11,48 @@
 <body>
 <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg" th:replace="fragments/common :: navbar">
 </nav>
-<section class="mbr-fullscreen mt-5">
+<section class="mbr-fullscreen mt-1">
     <div class="container">
-        <div th:if="${bookings.isEmpty()}">
-            <div class="alert alert-warning" role="alert">
-                기록이 없습니다.
-            </div>
-        </div>
-        <div th:each="booking : ${bookings}" class="card mb-3 align-center">
-            <div class="card-body">
-                <h1 class="mb-2">예약결과</h1>
-                <p class="card-text mb-2" th:if="${booking.active == false}">예약 신청되었으나 아직 예약되지 않았습니다. 연락을 기다려주세요.</p>
-                <p class="card-text" th:if="${booking.active == true}">
-                    <span th:text="${booking.name} + '님, '"></span>
-                    <span th:text="${booking.date} + '에 예약이 완료되었습니다'"></span>
-                </p>
-                <a th:if="${booking.active == true}" th:href="@{/booking/complete/delete/{id}(id=${booking.id})}" class="btn btn-danger">예약취소</a>
+        <h1>예약신청 목록</h1>
+
+        <!-- Tab Navigation -->
+        <ul class="nav nav-tabs" id="bookingTabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/booking/approve(status='active')}" th:classappend="${currentStatus == 'active'} ? 'active' : null">처리된 예약</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/booking/approve(status='inactive')}" th:classappend="${currentStatus == 'inactive'} ? 'active' : null">처리필요 예약</a>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="bookingTabsContent">
+            <div class="tab-pane fade show active" id="active" role="tabpanel" aria-labelledby="active-tab">
+                <table class="table table-striped mt-3">
+                    <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>이름</th>
+                        <th>전화번호</th>
+                        <th>원하는 날짜</th>
+                        <th>내용</th>
+                        <th>예약 처리</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="booking : ${bookings}">
+                        <td th:text="${booking.id}"></td>
+                        <td th:text="${booking.name}"></td>
+                        <td th:text="${booking.phone}"></td>
+                        <td th:text="${booking.date}"></td>
+                        <td style="max-width: 80%" th:text="${booking.content}"></td>
+                        <td>
+                            <a class="btn btn-primary" th:href="@{/booking/complete/delete/{id}(id=${booking.id})}" th:if="${currentStatus == 'active'}">삭제</a>
+                            <a class="btn btn-danger" th:href="@{/booking/check/{id}(id=${booking.id})}" th:if="${currentStatus == 'inactive'}">예약처리</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
